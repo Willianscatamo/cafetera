@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASOPCAFEORIENTE - Calidad que trasciende fronteras</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #4A6741; /* Verde Café */
+            --color-secundario: #A52A2A; /* Rojo Cereza */
+            --color-acento: #D4AF37; /* Dorado sutil, como el café tostado */
+            --color-fondo-claro: #F9F9F9; /* Blanco Hueso */
+            --color-fondo-oscuro: #3A2B20; /* Marrón oscuro para footer */
+            --color-texto-oscuro: #333333;
+            --color-texto-claro: #FFFFFF;
+            --transicion-suave: all 0.3s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--color-texto-oscuro);
+            background-color: var(--color-fondo-claro);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-texto-oscuro);
+            line-height: 1.2;
+        }
+
+        /* Navegación */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px); /* Efecto de desenfoque */
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--color-primario);
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--color-secundario);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-texto-oscuro);
+            font-weight: 600;
+            transition: var(--transicion-suave);
+            font-size: 0.98rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--color-secundario);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--color-secundario);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+            background: var(--color-secundario);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('hero-background.jpg');
+            height: 95vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto parallax */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-weight: 800;
+            color: var(--color-texto-claro);
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 900px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            color: var(--color-texto-claro);
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            padding: 16px 35px;
+            background-color: var(--color-secundario);
+            color: var(--color-texto-claro);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transicion-suave);
+            border: 2px solid var(--color-secundario);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: transparent;
+            border-color: var(--color-texto-claro);
+            color: var(--color-texto-claro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 60px 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            font-weight: 700;
+            color: var(--color-primario);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--color-secundario);
+            margin-top: 15px;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--color-texto-oscuro);
+            font-size: 1.05rem;
+        }
+
+        .section-text {
+            padding-right: 20px; /* Espacio para el texto */
+        }
+
+        .section-image {
+            padding-left: 20px; /* Espacio para la imagen */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: var(--transicion-suave);
+            object-fit: cover;
+        }
+
+        img:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Tarjetas de Servicios */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: var(--color-texto-claro);
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: var(--transicion-suave);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+        }
+
+        .card i {
+            font-size: 3.5rem;
+            color: var(--color-secundario);
+            margin-bottom: 25px;
+            transition: var(--transicion-suave);
+        }
+
+        .card:hover i {
+            color: var(--color-primario);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-primario);
+            margin-bottom: 18px;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Lista de Productos */
+        .productos-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .productos-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--color-texto-oscuro);
+            display: flex;
+            align-items: center;
+        }
+
+        .productos-list li i {
+            color: var(--color-secundario);
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-fondo-oscuro);
+            color: var(--color-texto-claro);
+            padding: 80px 10%;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 50px;
+        }
+
+        footer .footer-col h3 {
+            color: var(--color-acento);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        footer .footer-col p,
+        footer .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transicion-suave);
+        }
+
+        footer .footer-col a:hover {
+            color: var(--color-acento);
+            transform: translateX(5px);
+        }
+
+        footer .footer-col ul {
+            list-style: none;
+        }
+
+        footer .footer-col ul li a {
+            margin-bottom: 8px;
+        }
+
+        footer .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        footer .social-icons a {
+            color: var(--color-texto-claro);
+            font-size: 1.6rem;
+            transition: var(--transicion-suave);
+        }
+
+        footer .social-icons a:hover {
+            color: var(--color-acento);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        footer .copyright {
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.3rem; }
+            h2 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; gap: 50px; }
+            .section-text, .section-image { padding: 0; }
+            .grid img { order: -1; } /* Pone la imagen arriba en móvil para la sección "Nosotros" */
+            #productos .grid img { order: 1; } /* Mantiene la imagen abajo en móvil para la sección "Productos" */
+            .footer-grid { text-align: center; }
+            .footer-col ul { padding: 0; }
+        }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 1rem; }
+            nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; gap: 20px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .btn-cta { padding: 12px 25px; font-size: 1rem; }
+            section { padding: 60px 5%; }
+            h2 { font-size: 2rem; margin-bottom: 20px; }
+            h2::after { margin-top: 10px; }
+            .servicios-grid { gap: 30px; margin-top: 40px; }
+            .card { padding: 35px; }
+            .card h3 { font-size: 1.4rem; }
+            footer { padding: 60px 5%; }
+            footer .footer-grid { margin-bottom: 30px; }
+            footer .social-icons { margin-top: 20px; gap: 20px; }
+            footer .copyright { margin-top: 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 1.4rem; }
+            .logo i { font-size: 1.6rem; }
+            nav ul { gap: 15px; }
+            nav a { font-size: 0.9rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            h2 { font-size: 1.8rem; }
+            .card i { font-size: 3rem; }
+            .card h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#inicio" class="logo">
+            <i class="fas fa-leaf"></i> ASOPCAFEORIENTE
+        </a>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="inicio">
+        <h1>Calidad que trasciende fronteras</h1>
+        <p>Asociación de Productores de Café de Oriente: El puente estratégico hacia el mercado global.</p>
+        <a href="#contacto" class="btn-cta">Contáctanos</a>
+    </header>
+
+    <section id="nosotros">
+        <div class="grid">
+            <div class="section-text">
+                <h2>Sobre nosotros</h2>
+                <p>Somos una organización integral dedicada a la <strong>compra, venta y exportación</strong> de café de especialidad y comercial. Actuamos como un puente estratégico para las familias caficultoras del oriente venezolano, impulsando el desarrollo de sus pueblos y garantizando precios justos.</p>
+                <p>Nuestra misión es elevar la calidad de vida de nuestros productores a través de prácticas sostenibles y comercio directo, fomentando el crecimiento económico y social de la región.</p>
+            </div>
+            <div class="section-image">
+                <img src="nosotros-cosecha.jpg" alt="Manos recolectando café">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" style="background-color: var(--color-fondo-claro);">
+        <h2 style="text-align: center; margin-bottom: 60px;">Nuestros Servicios</h2>
+        <div class="servicios-grid">
+            <div class="card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Acompañamiento Técnico</h3>
+                <p>Trabajamos hombro a hombro en el campo para optimizar la siembra y la recolección en cada etapa del ciclo productivo, asegurando la calidad desde el origen.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-cogs"></i>
+                <h3>Beneficio Industrial</h3>
+                <p>Contamos con máquinas seleccionadoras por malla (12, 14, 16 y 18) y tecnología de <strong>selección óptica (láser)</strong> para una limpieza quirúrgica y estandarizada.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Logística y Exportación</h3>
+                <p>Gestionamos la logística y trámites necesarios para llevar el mejor café de oriente a los mercados internacionales más exigentes, garantizando eficiencia y trazabilidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos">
+        <div class="grid">
+            <div class="section-image">
+                <img src="productos-cafe-verde.jpg" alt="Granos de café verde">
+            </div>
+            <div class="section-text">
+                <h2>Nuestros Productos</h2>
+                <p>Especializados en <strong>café verde de excelencia</strong>, seleccionado bajo rigurosos estándares de pureza y perfil de taza. Ofrecemos una materia prima de calidad superior para las torrefactoras más exigentes.</p>
+                <ul class="productos-list">
+                    <li><i class="fas fa-check-circle"></i> Trazabilidad total garantizada desde la finca hasta el destino final.</li>
+                    <li><i class="fas fa-check-circle"></i> Suministro constante a torrefactoras nacionales con volúmenes adaptados a sus necesidades.</li>
+                    <li><i class="fas fa-check-circle"></i> Lotes premium para exportación, cumpliendo con certificaciones internacionales.</li>
+                    <li><i class="fas fa-check-circle"></i> Variedades de café con perfiles de sabor únicos de la región oriental.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#inicio" class="logo" style="color: var(--color-texto-claro); margin-bottom: 20px;">
+                    <i class="fas fa-leaf"></i> ASOPCAFEORIENTE
+                </a>
+                <p>El puente estratégico hacia el mercado global para las familias caficultoras del oriente venezolano.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Sector Los Mesones, Barcelona, estado Anzoátegui, Venezuela</p>
+                <a href="tel:+58412676035"><i class="fas fa-phone"></i> (58) 412 676035</a>
+                <a href="mailto:info@asopcafeoriente.com"><i class="fas fa-envelope"></i> info@asopcafeoriente.com</a>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <div class="social-icons" style="justify-content: flex-start;">
+                    <a href="https://www.instagram.com/asopcafeoriente" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/58412676035" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> ASOPCAFEORIENTE - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Actualiza el año del copyright automáticamente
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
