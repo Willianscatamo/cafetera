@@ -109,11 +109,8 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('hero-background.jpg');
+            position: relative; /* For positioning children */
             height: 95vh;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto parallax */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -121,6 +118,32 @@
             color: var(--color-texto-claro);
             text-align: center;
             padding: 0 20px;
+            /* overflow: hidden; Removed to allow fixed video visibility */
+            clip-path: inset(0); /* Alternative to overflow hidden for fixed background */
+        }
+
+        #hero-video {
+            position: fixed; /* Fixed position for parallax effect */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2; /* Place it behind the overlay */
+            object-fit: cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: -1; /* Place it between video and content */
         }
 
         .hero h1 {
@@ -165,6 +188,8 @@
             padding: 60px 10%;
             position: relative;
             overflow: hidden;
+            background-color: var(--color-fondo-claro); /* Ensure sections cover the fixed video */
+            z-index: 1; /* Ensure sections are above the video */
         }
 
         .grid {
@@ -294,6 +319,8 @@
             padding: 80px 10%;
             text-align: center;
             font-size: 0.95rem;
+            position: relative; /* Ensure footer covers the fixed video */
+            z-index: 1;
         }
 
         footer .footer-grid {
@@ -417,6 +444,9 @@
     </nav>
 
     <header class="hero" id="inicio">
+        <video id="hero-video" autoplay loop muted playsinline>
+            <source src="vid1.mp4" type="video/mp4">
+        </video>
         <h1>Calidad que trasciende fronteras</h1>
         <p>Asociación de Productores de Café de Oriente: El puente estratégico hacia el mercado global.</p>
         <a href="#contacto" class="btn-cta">Contáctanos</a>
