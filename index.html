@@ -7,6 +7,9 @@
     <meta name="description" content="Asociación de Productores de Café de Oriente en Venezuela. Exportación de café verde de especialidad y comercial con trazabilidad garantizada.">
     <meta name="keywords" content="café venezolano, exportación café, café verde, ASOPCAFEORIENTE, café de especialidad">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!-- Open Graph para Redes Sociales -->
     <meta property="og:title" content="ASOPCAFEORIENTE - Exportación de Café">
     <meta property="og:description" content="Conectamos el café de oriente venezolano con el mercado global.">
@@ -49,7 +52,7 @@
         /* Navegación */
         nav {
             background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,26 +64,33 @@
         }
 
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            color: var(--color-primario);
-            font-size: 1.6rem;
-            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
             text-decoration: none;
+            background: transparent !important;
+            border: none !important;
+            padding: 0;
+            outline: none;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            transition: var(--transicion-suave);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-        }
-
-        .logo i {
-            color: var(--color-secundario);
-            font-size: 1.8rem;
         }
 
         nav ul {
@@ -381,11 +391,13 @@
             font-weight: 700;
         }
 
-        footer .footer-col .logo {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            color: var(--color-texto-claro);
-            display: flex;
+        footer .footer-col .footer-logo img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
         }
 
         footer .footer-col p,
@@ -487,8 +499,7 @@
         }
 
         @media (max-width: 480px) {
-            .logo { font-size: 1.4rem; }
-            .logo i { font-size: 1.6rem; }
+            .logo img { height: 45px; }
             nav ul { gap: 15px; }
             nav a { font-size: 0.9rem; }
             .hero h1 { font-size: 2.2rem; }
@@ -503,7 +514,7 @@
 
     <nav>
         <a href="#inicio" class="logo">
-            <i class="fas fa-leaf"></i> ASOPCAFEORIENTE
+            <img src="nombre.png" alt="ASOPCAFEORIENTE Logo">
         </a>
         <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
@@ -611,8 +622,8 @@
     <footer id="contacto">
         <div class="footer-grid">
             <div class="footer-col">
-                <a href="#inicio" class="logo">
-                    <i class="fas fa-leaf"></i> ASOPCAFEORIENTE
+                <a href="#inicio" class="footer-logo">
+                    <img src="nombre.png" alt="ASOPCAFEORIENTE Logo">
                 </a>
                 <p>El puente estratégico hacia el mercado global para las familias caficultoras del oriente venezolano.</p>
             </div>
