@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASOPCAFEORIENTE - Calidad que trasciende fronteras</title>
+    <meta name="description" content="Asociación de Productores de Café de Oriente en Venezuela. Exportación de café verde de especialidad y comercial con trazabilidad garantizada.">
+    <meta name="keywords" content="café venezolano, exportación café, café verde, ASOPCAFEORIENTE, café de especialidad">
+    
+    <!-- Open Graph para Redes Sociales -->
+    <meta property="og:title" content="ASOPCAFEORIENTE - Exportación de Café">
+    <meta property="og:description" content="Conectamos el café de oriente venezolano con el mercado global.">
+    <meta property="og:image" content="nosotros-cosecha.jpg">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -62,6 +70,12 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .logo i {
@@ -312,6 +326,34 @@
             font-size: 1.2rem;
         }
 
+        /* Formulario de Contacto Mejorado */
+        .contact-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
         /* Footer */
         footer {
             background: var(--color-fondo-oscuro);
@@ -386,10 +428,24 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            nav ul.active { display: flex; }
+        }
+
+        @media (max-width: 992px) {
             .hero h1 { font-size: 3.5rem; }
-            .hero p { font-size: 1.3rem; }
             h2 { font-size: 2.5rem; }
-            .grid { grid-template-columns: 1fr; gap: 50px; }
             .section-text, .section-image { padding: 0; }
             .grid img { order: -1; } /* Pone la imagen arriba en móvil para la sección "Nosotros" */
             #productos .grid img { order: 1; } /* Mantiene la imagen abajo en móvil para la sección "Productos" */
@@ -398,8 +454,8 @@
         }
 
         @media (max-width: 768px) {
-            nav { flex-direction: column; padding: 1rem; }
-            nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; gap: 20px; }
+            nav { padding: 1rem 5%; }
+            .grid { grid-template-columns: 1fr; gap: 40px; }
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1.1rem; }
             .btn-cta { padding: 12px 25px; font-size: 1rem; }
@@ -434,7 +490,10 @@
         <a href="#inicio" class="logo">
             <i class="fas fa-leaf"></i> ASOPCAFEORIENTE
         </a>
-        <ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="nav-list">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#servicios">Servicios</a></li>
@@ -444,7 +503,7 @@
     </nav>
 
     <header class="hero" id="inicio">
-        <video id="hero-video" autoplay loop muted playsinline>
+        <video id="hero-video" autoplay loop muted playsinline poster="hero-fallback.jpg">
             <source src="vid1.mp4" type="video/mp4">
         </video>
         <h1>Calidad que trasciende fronteras</h1>
@@ -504,6 +563,36 @@
         </div>
     </section>
 
+    <section id="contacto-form" style="background-color: #eee; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2>Solicita una Cotización</h2>
+            <p>¿Interesado en nuestros lotes? Déjanos tus datos y nos pondremos en contacto.</p>
+            <div class="contact-container">
+                <form action="https://formspree.io/f/mojpvqwo" method="POST">
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0;">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electrónico</label>
+                            <input type="email" name="email" placeholder="juan@empresa.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono de Contacto</label>
+                        <input type="tel" name="telefono" placeholder="Ej. +58 424 1234567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje / Requerimiento</label>
+                        <textarea name="mensaje" rows="4" placeholder="Indícanos el tipo de café y volumen aproximado..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer id="contacto">
         <div class="footer-grid">
             <div class="footer-col">
@@ -542,8 +631,16 @@
     </footer>
 
     <script>
-        // Actualiza el año del copyright automáticamente
+        // 1. Actualiza el año del copyright automáticamente
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Lógica del menú móvil
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
     </script>
 
 </body>
